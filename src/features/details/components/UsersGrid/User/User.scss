@@ -1,0 +1,16 @@
+.user {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 10px 0 0;
+
+  &__image {
+    margin-right: 20px;
+    width: 48px;
+    height: 48px;
+  }
+
+  &__item {
+    flex: 1 1 0;
+  }
+}
