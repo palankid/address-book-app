@@ -1,0 +1,10 @@
+.details-modal {
+  &__header {
+    display: flex !important;
+    justify-content: space-between;
+  }
+
+  &__title {
+    padding-top: 3px;
+  }
+}

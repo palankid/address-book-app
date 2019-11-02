@@ -1,18 +1,17 @@
 import { createReducer, createAction } from 'redux-starter-kit'
-import axios from 'axios';
 
-import { fixUserIdentifiers } from './reducer.service';
+import { getUsers } from '../../api/addressBook.dataservice';
 
+export const selectUser = createAction('SELECT_USER');
 export const setError = createAction('SET_ERROR');
 export const setIsLoading = createAction('SET_IS_LOADING');
-export const setUsers = createAction('SET_USERS');
+export const updateUsers = createAction('UPDATE_USERS');
 
 export const fetchUsers = () => async (dispatch) => {
   try {
     dispatch(setIsLoading(true));
-    const result = await axios.get('https://randomuser.me/api/?results=100&seed=addressbook&name=chadbowman');
-    const users = fixUserIdentifiers(result.data.results);
-    dispatch(setUsers(users));
+    const users = await getUsers();
+    dispatch(updateUsers(users));
   } catch (err) {
     dispatch(setError('Error occured during fetching users data.'))
   }
@@ -22,13 +21,15 @@ export const fetchUsers = () => async (dispatch) => {
 const initialState = {
   error: '',
   isLoading: false,
+  selectedUserId: '',
   users: [],
 };
 
 const reducer = createReducer(initialState, {
+  [selectUser.type]: (state, action) => { state.selectedUserId = action.payload },
   [setError.type]: (state, action) => { state.error = action.payload },
   [setIsLoading.type]: (state, action) => { state.isLoading = action.payload },
-  [setUsers.type]: (state, action) => {
+  [updateUsers.type]: (state, action) => {
     state.users = [ ...state.users, ...action.payload ]
   },
 });

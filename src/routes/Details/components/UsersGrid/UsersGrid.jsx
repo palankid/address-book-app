@@ -1,12 +1,13 @@
 import React from 'react';
-import { Container, Table } from "semantic-ui-react";
+import { array } from 'prop-types';
+import { Container, Table } from 'semantic-ui-react';
 
 import User from './User'
 
-const UsersGrid = (props) => {
-  const usersRows = props.users.map(user => (
+const UsersGrid = ({ users }) => {
+  const usersRows = users.map(user => (
     <User
-      key={user.id.value}
+      key={user.login.uuid}
       user={user}
     />
   ));
@@ -29,6 +30,10 @@ const UsersGrid = (props) => {
       </Table>
     </Container>
   )
+};
+
+UsersGrid.propTypes = {
+  users: array
 };
 
 export default UsersGrid;

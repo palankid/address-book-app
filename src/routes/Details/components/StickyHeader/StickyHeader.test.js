@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme';
+import { Input } from 'semantic-ui-react';
 
-import StickyHeader from "./StickyHeader";
-import {Input} from "semantic-ui-react";
+import StickyHeader from './StickyHeader';
 
 describe('Details', () => {
   let wrapper;

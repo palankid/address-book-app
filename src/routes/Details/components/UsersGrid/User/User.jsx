@@ -1,21 +1,29 @@
 import React from 'react';
 import { shape, string } from 'prop-types';
-import { Button, Table } from "semantic-ui-react";
+import { Button, Table } from 'semantic-ui-react';
+import { useDispatch } from 'react-redux';
+
+import { selectUser } from '../../../reducer';
 
 const User = ({
   user: {
     email,
-    login: { username },
+    login: { uuid, username },
     name: { first, last },
     picture: { thumbnail }
   }
 }) => {
+  const dispatch = useDispatch();
+
+  const onDetailsClick = () => {
+    dispatch(selectUser(uuid));
+  };
+
   return (
     <Table.Row>
       <Table.Cell>
         <img
           className="user__image"
-          alt="helooooo"
           src={ thumbnail }
         />
       </Table.Cell>
@@ -24,7 +32,9 @@ const User = ({
       <Table.Cell>{ username }</Table.Cell>
       <Table.Cell>{ email }</Table.Cell>
       <Table.Cell>
-        <Button secondary>
+        <Button
+          secondary
+          onClick={onDetailsClick}>
           Details
         </Button>
       </Table.Cell>

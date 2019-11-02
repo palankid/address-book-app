@@ -1,22 +1,29 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   Button,
   Container,
   Icon,
   Input
-} from "semantic-ui-react";
+} from 'semantic-ui-react';
+
+import {routeNames} from '../../../../config/routes.config';
 
 const StickyHeader = () => {
-
+  const history = useHistory();
   const onChange = (event, data) => {
     console.warn('changeeeeeeeeeeee', event, data.value);
+  };
+
+  const onSettingsClick = () => {
+    history.push(routeNames.settings);
   };
 
   return (
     <header className="sticky-header">
       <Container className="sticky-header__container">
         <Icon
-          name="address book"
+          name="address book outline"
           size="huge"
         />
         <Input
@@ -32,6 +39,7 @@ const StickyHeader = () => {
           secondary
           icon="setting"
           size="big"
+          onClick={onSettingsClick}
         />
       </Container>
     </header>

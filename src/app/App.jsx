@@ -1,12 +1,24 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 
-import './App.scss'
-import Details from '../features/details';
+import routes, { routeNames } from '../config/routes.config';
+import NotFound from "../routes/NotFound";
 
 const App = () => {
+  const routeComponents = routes.map((route) => (
+    <Route
+      key={route.path}
+      {...route}
+    />
+  ));
+
   return (
-    <Details />
+    <HashRouter basename={routeNames.root}>
+      <Switch>
+        {routeComponents}
+      </Switch>
+    </HashRouter>
   )
 };
 

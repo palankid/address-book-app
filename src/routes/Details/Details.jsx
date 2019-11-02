@@ -4,8 +4,9 @@ import { useEffect } from 'react';
 
 import StickyHeader from './components/StickyHeader';
 import UsersGrid from './components/UsersGrid';
+import DetailsModal from './components/DetailsModal'
 
-import { fetchUsers } from "./reducer";
+import { fetchUsers } from './reducer';
 import './Details.scss';
 
 const Details = () => {
@@ -15,7 +16,7 @@ const Details = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchUsers())
+    dispatch(fetchUsers());
   }, []);
 
   return (
@@ -24,6 +25,7 @@ const Details = () => {
       <UsersGrid
         users={users}
       />
+      <DetailsModal />
     </React.Fragment>
   )
 };
