@@ -1,0 +1,13 @@
+.loading-module {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  &__text {
+    font-size: 1.5rem;
+    padding: 10px;
+    color: #FFFFFF;
+    background-color: #FF0000;
+  }
+}

@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { endpoints } from '../config/endpoints.config';
 import { PAGE_SIZE } from '../config/app.config';
 

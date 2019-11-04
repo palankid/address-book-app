@@ -8,7 +8,7 @@ import DetailsModal from './DetailsModal';
 
 describe('DetailsModal', () => {
   const createState = (selectedUserId) => ({
-    details: {
+    usersView: {
       selectedUserId,
       users: [{
         login: {
