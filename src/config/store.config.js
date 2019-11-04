@@ -1,10 +1,10 @@
 import { combineReducers, configureStore } from 'redux-starter-kit';
 
-import detailsReducer from '../routes/Details/reducer';
+import usersReducer from '../routes/UsersView/reducer';
 import settingsReducer from '../routes/Settings/reducer';
 
 const rootReducer = combineReducers({
-  details: detailsReducer,
+  usersView: usersReducer,
   settings: settingsReducer,
 });
 const store = configureStore({

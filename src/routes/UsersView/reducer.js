@@ -23,6 +23,7 @@ const initialState = {
   isLoading: false,
   selectedUserId: '',
   users: [],
+  preFetchedUsers: []
 };
 
 const reducer = createReducer(initialState, {

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import { selectUser } from '../../../reducer';
 
-const User = ({
+const UserRow = ({
   user: {
     email,
     login: { uuid, username },
@@ -42,7 +42,7 @@ const User = ({
   );
 };
 
-User.propTypes = {
+UserRow.propTypes = {
   user: shape({
     email: string,
     login: shape({
@@ -58,4 +58,4 @@ User.propTypes = {
   })
 };
 
-export default User;
+export default UserRow;

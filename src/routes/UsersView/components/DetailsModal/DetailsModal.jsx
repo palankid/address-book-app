@@ -1,18 +1,15 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Icon, Modal } from 'semantic-ui-react';
 
 import { selectUser } from '../../reducer';
 
 import ModalContent from './ModalContent';
+import { selectedUserSelector } from './selectors';
 
 const DetailsModal = () => {
   const dispatch = useDispatch();
-  const selectedUser = useSelector(
-    ({ details: { selectedUserId, users } }) => {
-      return users.find(user => user.login.uuid === selectedUserId)
-    }
-  );
+  const selectedUser = useSelector(selectedUserSelector);
 
   const shouldShowModal = Boolean(selectedUser);
   if (!shouldShowModal) { return null }

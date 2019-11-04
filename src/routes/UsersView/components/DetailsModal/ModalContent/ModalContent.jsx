@@ -20,27 +20,27 @@ const ModalContent = ({
       <table>
         <tbody>
           <tr>
-            <td>Name</td>
+            <td className="modal-content__row-title">Name</td>
             <td>{ `${first} ${last}` }</td>
           </tr>
           <tr>
-            <td>Street</td>
+            <td className="modal-content__row-title">Street</td>
             <td>{ `${street.name} str. ${street.number}` }</td>
           </tr>
           <tr>
-            <td>City</td>
+            <td className="modal-content__row-title">City</td>
             <td>{ city }</td>
           </tr>
           <tr>
-            <td>State</td>
+            <td className="modal-content__row-title">State</td>
             <td>{ state }</td>
           </tr>
           <tr>
-            <td>Phone</td>
+            <td className="modal-content__row-title">Phone</td>
             <td>{ phone }</td>
           </tr>
           <tr>
-            <td>Cell phone</td>
+            <td className="modal-content__row-title">Cell phone</td>
             <td>{ cell }</td>
           </tr>
         </tbody>

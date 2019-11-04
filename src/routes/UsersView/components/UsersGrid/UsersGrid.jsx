@@ -2,11 +2,11 @@ import React from 'react';
 import { array } from 'prop-types';
 import { Container, Table } from 'semantic-ui-react';
 
-import User from './User'
+import UserRow from './UserRow'
 
 const UsersGrid = ({ users }) => {
   const usersRows = users.map(user => (
-    <User
+    <UserRow
       key={user.login.uuid}
       user={user}
     />

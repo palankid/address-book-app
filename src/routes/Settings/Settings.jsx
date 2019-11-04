@@ -3,16 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import {Container, Dropdown, Icon} from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 
+import { routeNames } from '../../config/routes.config';
 import nationalities from './nationalities.config';
 import { selectNationality } from './reducer';
-import {routeNames} from "../../config/routes.config";
 
 const Settings = () => {
   const routerHistory = useHistory();
   const dispatch = useDispatch();
-  const nationality = useSelector(
-    state => state.settings.nationality
-  );
+  const nationality = useSelector(state => state.settings.nationality);
 
   const onChangeNationality = (event, { value }) => {
     dispatch(selectNationality(value));
@@ -30,7 +28,7 @@ const Settings = () => {
             link
             name="arrow left"
             size="big"
-            onClick={onBackClick}a
+            onClick={onBackClick}
           />
         </div>
         <Icon

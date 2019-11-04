@@ -1,4 +1,4 @@
-import Details from '../routes/Details';
+import UsersView from '../routes/UsersView';
 import Settings from '../routes/Settings';
 import NotFound from "../routes/NotFound";
 
@@ -12,11 +12,10 @@ const routes = [
   {
     path: routeNames.root,
     exact: true,
-    component: Details
+    component: UsersView
   },
   {
     path: routeNames.settings,
-    exact: true,
     component: Settings,
   },
   {
