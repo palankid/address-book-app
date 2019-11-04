@@ -6,7 +6,7 @@ import { Icon } from 'semantic-ui-react';
 
 import DetailsModal from './DetailsModal';
 
-describe('ModalContent', () => {
+describe('DetailsModal', () => {
   const createState = (selectedUserId) => ({
     details: {
       selectedUserId,

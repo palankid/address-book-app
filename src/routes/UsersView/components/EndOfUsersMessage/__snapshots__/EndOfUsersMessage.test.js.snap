@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EndOfUsersMessage should display message if max number of users is reached 1`] = `
+<div
+  className="end-of-users-message"
+>
+  <span
+    className="end-of-users-message__text"
+  >
+    End of users catalog
+  </span>
+</div>
+`;

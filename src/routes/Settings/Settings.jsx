@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { routeNames } from '../../config/routes.config';
 import nationalities from './nationalities.config';
 import { selectNationality } from './reducer';
+import { fetchUsers, resetUsers } from '../UsersView/reducer';
 
 const Settings = () => {
   const routerHistory = useHistory();
@@ -14,6 +15,8 @@ const Settings = () => {
 
   const onChangeNationality = (event, { value }) => {
     dispatch(selectNationality(value));
+    dispatch(resetUsers());
+    dispatch(fetchUsers());
   };
 
   const onBackClick = () => {

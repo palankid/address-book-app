@@ -1,0 +1,11 @@
+.end-of-users-message {
+  text-align: center;
+  margin: 20px 0;
+
+  &__text {
+    font-size: 1.5rem;
+    padding: 10px;
+    color: #FFFFFF;
+    background-color: #FF0000;
+  }
+}

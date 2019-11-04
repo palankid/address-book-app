@@ -2,10 +2,12 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useRef } from 'react';
 
+import { MAX_USERS_COUNT } from '../../config/app.config';
+
 import StickyHeader from './components/StickyHeader';
 import UsersGrid from './components/UsersGrid';
 import DetailsModal from './components/DetailsModal'
-
+import EndOfUsersMessage from './components/EndOfUsersMessage';
 import { fetchUsers } from './reducer';
 
 const UsersView = () => {
@@ -19,7 +21,7 @@ const UsersView = () => {
     const onScroll = () => {
       const rect = containerRef.current.getBoundingClientRect();
       const isAtBottomOfPage = rect.bottom === window.innerHeight;
-      console.log('scroll', isAtBottomOfPage);
+      isAtBottomOfPage && dispatch(fetchUsers());
     };
 
     document.addEventListener('scroll', onScroll);
@@ -27,7 +29,6 @@ const UsersView = () => {
 
     return () => {
       document.removeEventListener('scroll', onScroll);
-      console.log('unmounted');
     }
   }, []);
 
@@ -35,6 +36,9 @@ const UsersView = () => {
     <div ref={containerRef}>
       <StickyHeader />
       <UsersGrid
+        users={users}
+      />
+      <EndOfUsersMessage
         users={users}
       />
       <DetailsModal />
