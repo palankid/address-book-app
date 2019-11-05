@@ -17,7 +17,7 @@ const StickyHeader = () => {
   const history = useHistory();
 
   /**
-   * Handle input
+   * Handle keyboard input events
    * @param {Object<SyntheticEvent>} event - React synthetic event
    * @param {Object} payload - Input payload
    * @param {Object} payload.value - Input value

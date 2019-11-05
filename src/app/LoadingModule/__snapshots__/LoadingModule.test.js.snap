@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingModule should test that component is not changed unintentionally 1`] = `
+<div
+  className="loading-module"
+>
+  <span
+    className="loading-module__text"
+  >
+    Loading module...
+  </span>
+</div>
+`;

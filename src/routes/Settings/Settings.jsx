@@ -17,12 +17,21 @@ const Settings = () => {
   const dispatch = useDispatch();
   const nationality = useSelector(state => state.settings.nationality);
 
+  /**
+   * Handle dropdown change events
+   * @param {Object<SyntheticEvent>} event - React synthetic event
+   * @param {Object} payload - Input payload
+   * @param {Object} payload.value - Input value
+   */
   const onChangeNationality = (event, { value }) => {
     dispatch(selectNationality(value));
     dispatch(resetUsers());
     dispatch(fetchUsers());
   };
 
+  /**
+   * Handle back button click events
+   */
   const onBackClick = () => {
     routerHistory.push(routeNames.root);
   };
@@ -41,7 +50,6 @@ const Settings = () => {
         <Icon
           name="setting"
           size="big"
-          onClick={onBackClick}
         />
         <span className="settings__title">
           Settings

@@ -1,5 +1,5 @@
 /**
- * Nationalities
+ * Nationalities config
  * @module routes/Settings/nationality
  */
 
@@ -8,6 +8,9 @@ const es = 'es';
 const fr = 'fr';
 const gb = 'gb';
 
+/**
+ * Nationalities config for dropdown component
+ */
 const nationalities = [
   {
     key: ch,

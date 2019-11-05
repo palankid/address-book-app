@@ -16,6 +16,9 @@ export const routeNames = {
   settings: '/settings',
 };
 
+/**
+ * Application's route config with lazy loaded components.
+ */
 const routes = [
   {
     path: routeNames.root,

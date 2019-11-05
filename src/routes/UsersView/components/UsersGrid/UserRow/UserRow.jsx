@@ -20,6 +20,9 @@ const UserRow = ({
 }) => {
   const dispatch = useDispatch();
 
+  /**
+   * Handle details button click events
+   */
   const onDetailsClick = () => {
     dispatch(selectUser(uuid));
   };
