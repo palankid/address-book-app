@@ -30,7 +30,7 @@ export const updateUsers = createAction('UPDATE_USERS');
  * @param {Number} delayMillis - Simulate that the database behind the endpoint is very busy
  * @returns {fetchUsers}
  */
-export const fetchUsers = (delayMillis = 50) => async (dispatch, getState) => {
+export const fetchUsers = (delayMillis = 1000) => async (dispatch, getState) => {
   try {
     const { currentPage, users } = getState().usersView;
     const { nationality } = getState().settings;

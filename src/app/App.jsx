@@ -4,7 +4,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import routes, { routeNames } from '../config/routes.config';
 
-import LoadingModule from './LoadingModule';
+import LoadingMessage from '../components/LoadingMessage';
 
 /**
  * Application component with lazy loaded components
@@ -20,10 +20,13 @@ const App = () => {
     />
   ));
 
+  /** Fallback component to display when a component is not loaded yet and can't be displayed */
+  const loadingMessage = <LoadingMessage message="Loading modules" />;
+
   return (
     <HashRouter basename={routeNames.root}>
       <Suspense
-        fallback={<LoadingModule />}>
+        fallback={loadingMessage}>
         <Switch>
           {routeComponents}
         </Switch>

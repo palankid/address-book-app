@@ -6,6 +6,9 @@
  * @param {Array} state.usersView.users - List of users to check
  * @returns {Array} Filtered users
  */
+
+import { MAX_USERS_COUNT } from '../../config/app.config';
+
 export const filteredUsersSelector = ({ usersView: { filter, users } }) => {
   if (!filter) { return users }
 
@@ -18,12 +21,12 @@ export const filteredUsersSelector = ({ usersView: { filter, users } }) => {
 };
 
 /**
- * Get length of users list selector
+ * Check if maximum allowed users are already loaded
  * @param {Object} state - Application level state
  * @param {Object} state.usersView - Users view specific state slice
  * @param {Array} state.usersView.users - List of users to check
- * @returns {Number}
+ * @returns {Boolean}
  */
-export const unfilteredUsersLengthSelector = ({ usersView: { users } }) => {
-  return users.length;
+export const isMaxUsersReachedSelector = ({ usersView: { users } }) => {
+  return users.length >= MAX_USERS_COUNT;
 };

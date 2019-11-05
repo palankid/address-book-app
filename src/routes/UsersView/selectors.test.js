@@ -1,44 +1,45 @@
-import { filteredUsersSelector, unfilteredUsersLengthSelector } from './selectors';
+import { filteredUsersSelector, isMaxUsersReachedSelector } from './selectors';
+import {MAX_USERS_COUNT} from "../../config/app.config";
 
 describe('selectors', () => {
-  const user1 = {
-    login: {
-      uuid: 'john-smith-uuid',
-      username: 'johnsmith'
-    },
-    name: {
-      first: 'John',
-      last: 'Smith',
-    },
-  };
-  const user2 = {
-    login: {
-      uuid: 'albert-johnny-uuid',
-      username: 'albertjohnny'
-    },
-    name: {
-      first: 'Albert',
-      last: 'Johnny',
-    },
-  };
-  const user3 = {
-    login: {
-      uuid: 'ace-ventura-uuid',
-      username: 'aceventura'
-    },
-    name: {
-      first: 'Ace',
-      last: 'Ventura',
-    },
-  };
-  const createState = (filter) => ({
-    usersView: {
-      users: [user1, user2, user3],
-      filter
-    }
-  });
-
   describe('filteredUsersSelector', () => {
+    const user1 = {
+      login: {
+        uuid: 'john-smith-uuid',
+        username: 'johnsmith'
+      },
+      name: {
+        first: 'John',
+        last: 'Smith',
+      },
+    };
+    const user2 = {
+      login: {
+        uuid: 'albert-johnny-uuid',
+        username: 'albertjohnny'
+      },
+      name: {
+        first: 'Albert',
+        last: 'Johnny',
+      },
+    };
+    const user3 = {
+      login: {
+        uuid: 'ace-ventura-uuid',
+        username: 'aceventura'
+      },
+      name: {
+        first: 'Ace',
+        last: 'Ventura',
+      },
+    };
+    const createState = (filter) => ({
+      usersView: {
+        users: [user1, user2, user3],
+        filter
+      }
+    });
+
     it('should not filter any users if filter is empty', () => {
       const state = createState('');
       const expected = [user1, user2, user3];
@@ -64,12 +65,25 @@ describe('selectors', () => {
     });
   });
 
-  describe('unfilteredUsersLengthSelector', () => {
-    it('should return the number of users in state', () => {
-      const state = createState();
-      const expected = unfilteredUsersLengthSelector(state);
+  describe('isMaxUsersReachedSelector', () => {
+    const createState = (count) => ({
+      usersView: {
+        users: new Array(count).map(() => ({}))
+      }
+    });
 
-      expect(expected).toBe(3);
+    it('should return true if max users length is reached', () => {
+      const state = createState(MAX_USERS_COUNT);
+      const expected = isMaxUsersReachedSelector(state);
+
+      expect(expected).toBe(true);
+    });
+
+    it('should return false if max users length is not reached', () => {
+      const state = createState(3);
+      const expected = isMaxUsersReachedSelector(state);
+
+      expect(expected).toBe(false);
     })
   });
 });
