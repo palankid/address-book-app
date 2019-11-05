@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Icon } from 'semantic-ui-react';
+
 /**
  * Fallback component to display when a component for a specific
  * route is not loaded and therefore can't be displayed yet
@@ -8,8 +10,13 @@ import React from 'react';
 const LoadingModule = () => {
   return (
     <div className="loading-module">
+      <Icon
+        loading
+        name="spinner"
+        size="huge"
+      />
       <span className="loading-module__text">
-        Loading module...
+        Loading module
       </span>
     </div>
   );

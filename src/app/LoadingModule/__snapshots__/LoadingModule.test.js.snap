@@ -4,10 +4,16 @@ exports[`LoadingModule should test that component is not changed unintentionally
 <div
   className="loading-module"
 >
+  <Icon
+    as="i"
+    loading={true}
+    name="spinner"
+    size="huge"
+  />
   <span
     className="loading-module__text"
   >
-    Loading module...
+    Loading module
   </span>
 </div>
 `;

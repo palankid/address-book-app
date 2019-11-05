@@ -12,6 +12,7 @@ import { MAX_USERS_COUNT } from '../../config/app.config';
 /**
  * Redux starter kit actions
  */
+export const changeFilter = createAction('CHANGE_FILTER');
 export const resetUsers = createAction('RESET_USERS');
 export const selectUser = createAction('SELECT_USER');
 export const setCurrentPage = createAction('SET_CURRENT_PAGE');
@@ -51,6 +52,7 @@ export const fetchUsers = (delayMillis = 50) => async (dispatch, getState) => {
 const initialState = {
   currentPage: 1,
   error: '',
+  filter: '',
   isLoading: false,
   selectedUserId: '',
   users: [],
@@ -61,18 +63,19 @@ const initialState = {
  * Users view reducer
  */
 const reducer = createReducer(initialState, {
+  [changeFilter.type]: (state, { payload }) => { state.filter = payload },
   [resetUsers.type]: (state) => {
     state.users = [];
     state.currentPage = 1;
   },
-  [selectUser.type]: (state, action) => { state.selectedUserId = action.payload },
-  [setCurrentPage.type]: (state, action) => { state.currentPage = action.payload },
-  [setError.type]: (state, action) => { state.error = action.payload },
-  [setIsLoading.type]: (state, action) => { state.isLoading = action.payload },
-  [updateUsers.type]: (state, action) => {
+  [selectUser.type]: (state, { payload }) => { state.selectedUserId = payload },
+  [setCurrentPage.type]: (state, { payload }) => { state.currentPage = payload },
+  [setError.type]: (state, { payload }) => { state.error = payload },
+  [setIsLoading.type]: (state, { payload }) => { state.isLoading = payload },
+  [updateUsers.type]: (state, { payload }) => {
     state.users = [
       ...state.users,
-      ...action.payload
+      ...payload
     ]
   },
 });

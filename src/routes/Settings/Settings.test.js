@@ -32,7 +32,7 @@ describe('Settings', () => {
     </Provider>
   );
 
-  it('should change route when setting icon is clicked', () => {
+  it('should change route when back icon button is clicked', () => {
     wrapper
       .find(Icon)
       .find('[name="arrow left"]')

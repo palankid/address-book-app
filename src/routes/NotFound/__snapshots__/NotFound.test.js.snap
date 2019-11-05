@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoadingModule should test that component is not changed unintentionally 1`] = `
+exports[`NotFound should test that component is not changed unintentionally 1`] = `
 <div
   className="not-found"
 >

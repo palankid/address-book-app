@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Button,
   Container,
@@ -7,7 +8,8 @@ import {
   Input
 } from 'semantic-ui-react';
 
-import {routeNames} from '../../../../config/routes.config';
+import { routeNames } from '../../../../config/routes.config';
+import { changeFilter } from '../../reducer';
 
 /**
  * Sticky header component with a link to settings page and a search input
@@ -15,6 +17,8 @@ import {routeNames} from '../../../../config/routes.config';
  */
 const StickyHeader = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const filter = useSelector(state => state.usersView.filter);
 
   /**
    * Handle keyboard input events
@@ -23,7 +27,7 @@ const StickyHeader = () => {
    * @param {Object} payload.value - Input value
    */
   const onChange = (event, { value }) => {
-    console.warn('changeeeeeeeeeeee', event, value);
+    dispatch(changeFilter(value));
   };
 
   /**
@@ -53,6 +57,7 @@ const StickyHeader = () => {
           secondary
           icon="setting"
           size="big"
+          defaultValue={filter}
           onClick={onSettingsClick}
         />
       </Container>
