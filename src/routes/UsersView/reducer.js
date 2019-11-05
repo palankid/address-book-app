@@ -49,6 +49,20 @@ export const fetchUsers = (delayMillis = 50) => async (dispatch, getState) => {
   dispatch(setIsLoading(false));
 };
 
+/**
+ * @typedef {Function} resetUsersView
+ * @param {Function} dispatch - Dispatches an action
+ */
+/**
+ * Reset users view
+ * @returns {resetUsersView}
+ */
+export const resetUsersView = () => (dispatch) => {
+  dispatch(resetUsers());
+  dispatch(changeFilter(''));
+  dispatch(fetchUsers());
+};
+
 const initialState = {
   currentPage: 1,
   error: '',

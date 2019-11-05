@@ -8,7 +8,7 @@ import { createMemoryHistory } from 'history';
 import { Dropdown, Icon } from 'semantic-ui-react';
 
 import Settings from './Settings';
-import { fetchUsers, resetUsers } from '../UsersView/reducer';
+import { resetUsersView } from '../UsersView/reducer';
 import { selectNationality } from "./reducer";
 
 jest.mock('../UsersView/reducer');
@@ -41,14 +41,13 @@ describe('Settings', () => {
     expect(mockHistory.push).toBeCalledWith('/')
   });
 
-  it('should test that dispatch was called 3 times with appropriate actions', () => {
+  it('should test that dispatch was called 2 times with appropriate actions', () => {
     wrapper
       .find(Dropdown)
       .simulate('change', '', { value: ['val'] });
 
-    expect(mockedStore.dispatch).toBeCalledTimes(3);
+    expect(mockedStore.dispatch).toBeCalledTimes(2);
     expect(mockedStore.dispatch).toHaveBeenCalledWith(selectNationality());
-    expect(mockedStore.dispatch).toHaveBeenCalledWith(resetUsers());
-    expect(mockedStore.dispatch).toHaveBeenCalledWith(fetchUsers());
+    expect(mockedStore.dispatch).toHaveBeenCalledWith(resetUsersView());
   })
 });

@@ -49,9 +49,7 @@ describe('StickyHeader', () => {
   });
 
   it('should test that initial filter value is passed to input', () => {
-    const inputText = wrapper.find(Input).instance().defaultValue;
-    console.log(wrapper.html());
-    console.log(inputText)
+    const inputText = wrapper.find(Input).props().value;
 
     expect(inputText).toBe('test');
   });

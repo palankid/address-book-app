@@ -7,6 +7,7 @@ import UsersGrid from './components/UsersGrid';
 import DetailsModal from './components/DetailsModal'
 import EndOfUsersMessage from './components/EndOfUsersMessage';
 import { fetchUsers } from './reducer';
+import { filteredUsersSelector, unfilteredUsersLengthSelector } from './selectors';
 
 /**
  * Users view route component
@@ -14,7 +15,8 @@ import { fetchUsers } from './reducer';
 const UsersView = () => {
   const containerRef = useRef(null);
   const dispatch = useDispatch();
-  const users = useSelector(state => state.usersView.users);
+  const filteredUsers = useSelector(filteredUsersSelector);
+  const unfilteredUsersLength = useSelector(unfilteredUsersLengthSelector);
 
   /**
    * Initiate fetching users and subscribe to document scroll events
@@ -31,7 +33,7 @@ const UsersView = () => {
     };
 
     document.addEventListener('scroll', onScroll);
-    !users.length && dispatch(fetchUsers());
+    !unfilteredUsersLength && dispatch(fetchUsers());
 
     return () => {
       document.removeEventListener('scroll', onScroll);
@@ -42,10 +44,10 @@ const UsersView = () => {
     <div ref={containerRef}>
       <StickyHeader />
       <UsersGrid
-        users={users}
+        users={filteredUsers}
       />
       <EndOfUsersMessage
-        users={users}
+        usersLength={unfilteredUsersLength}
       />
       <DetailsModal />
     </div>

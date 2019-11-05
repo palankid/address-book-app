@@ -46,18 +46,18 @@ const StickyHeader = () => {
         />
         <Input
           className="sticky-header__input"
-          onChange={onChange}
           icon="search"
           iconPosition="left"
           placeholder="Search..."
           size="large"
+          onChange={onChange}
+          value={filter}
         />
         <Button
           circular
           secondary
           icon="setting"
           size="big"
-          defaultValue={filter}
           onClick={onSettingsClick}
         />
       </Container>

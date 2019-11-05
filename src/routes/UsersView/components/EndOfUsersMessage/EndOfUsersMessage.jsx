@@ -1,16 +1,16 @@
 import React from 'react';
-import { array } from 'prop-types';
+import { number } from 'prop-types';
 
 import { MAX_USERS_COUNT } from '../../../../config/app.config';
 
 /**
  * Display a message if max number of users are rendered on the screen
  * @param {Object} props - React PropTypes
- * @param {Array} props.users - List of users
+ * @param {Array} props.usersLength - Number of users
  * @returns {Object<Node>} React node
  */
-const EndOfUsersMessage = ({ users }) => {
-  const isMessageHidden = users.length < MAX_USERS_COUNT;
+const EndOfUsersMessage = ({ usersLength }) => {
+  const isMessageHidden = usersLength < MAX_USERS_COUNT;
   if (isMessageHidden) { return null }
 
   return (
@@ -23,7 +23,7 @@ const EndOfUsersMessage = ({ users }) => {
 };
 
 EndOfUsersMessage.propTypes = {
-  users: array
+  usersLength: number
 };
 
 export default EndOfUsersMessage;
