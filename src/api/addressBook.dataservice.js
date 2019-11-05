@@ -4,12 +4,12 @@ import { endpoints } from '../config/endpoints.config';
 import { PAGE_SIZE, SEED_NAME } from '../config/app.config';
 
 /**
- * Get list of users
+ * Fetch list of users
  * @param {String} nat - Nationality
  * @param {Number} page - Current page number
  * @returns {Promise<Array>} Fetched users
  */
-export const getUsers = (nat, page) => {
+const fetchUsers = (nat, page) => {
   return axios.get(endpoints.users, {
     params: {
       nat,
@@ -19,3 +19,7 @@ export const getUsers = (nat, page) => {
     }
   }).then(response => response.data.results)
 };
+
+export default {
+  fetchUsers
+}

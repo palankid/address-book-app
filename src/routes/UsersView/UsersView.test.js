@@ -6,7 +6,7 @@ import { getDefaultMiddleware } from 'redux-starter-kit';
 import configureStore from 'redux-mock-store';
 
 import UsersView from './UsersView';
-import { fetchUsers } from './reducer';
+import { getUsers, setShouldLiftState } from './reducer';
 
 jest.mock('./reducer');
 
@@ -27,40 +27,34 @@ describe('UsersView', () => {
     </Provider>
   );
 
-  it('should dispatch initial fetch users request if users list is empty', () => {
+  it('should dispatch 2 actions initially', () => {
     const mockedStore = createMockedStore([]);
     createComponent(mockedStore);
 
-    expect(mockedStore.dispatch).toHaveBeenCalledTimes(1);
-    expect(mockedStore.dispatch).toHaveBeenCalledWith(fetchUsers());
+    expect(mockedStore.dispatch).toHaveBeenCalledTimes(2);
+    expect(mockedStore.dispatch).toHaveBeenCalledWith(getUsers());
+    expect(mockedStore.dispatch).toHaveBeenCalledWith(setShouldLiftState());
   });
 
-  it('should not dispatch initial fetch users request if users list is not empty', () => {
+  it('should dispatch 1 action if user list is populated', () => {
     const mockedStore = createMockedStore([{
+      email: 'john.smith@gmail.com',
       login: {
         uuid: 'john-smith-uuid',
         username: 'johnsmith'
-      },
-      cell: '12345678',
-      location: {
-        city: 'Los Angeles',
-        state: 'California',
-        street: {
-          name: 'Elm',
-          number: 1,
-        },
       },
       name: {
         first: 'John',
         last: 'Smith',
       },
-      phone: '87654321',
       picture: {
-        large: 'path-to-image',
+        thumbnail: 'path-to-image',
       },
     }]);
     createComponent(mockedStore);
 
-    expect(mockedStore.dispatch).toHaveBeenCalledTimes(0);
+    expect(mockedStore.dispatch).toHaveBeenCalledTimes(1);
+    expect(mockedStore.dispatch).toHaveBeenCalledWith(setShouldLiftState());
   });
+
 });
