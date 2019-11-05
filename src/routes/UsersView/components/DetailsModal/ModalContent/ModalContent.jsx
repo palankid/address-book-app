@@ -2,6 +2,11 @@ import React from 'react';
 import { Image } from 'semantic-ui-react';
 import { object, shape, string } from 'prop-types';
 
+/**
+ * Display the details of a user
+ * @param {Object} props - React PropTypes
+ * @returns {Object<Node>} React node
+ */
 const ModalContent = ({
   user: {
     cell,

@@ -8,6 +8,10 @@ import nationalities from './nationalities.config';
 import { selectNationality } from './reducer';
 import { fetchUsers, resetUsers } from '../UsersView/reducer';
 
+/**
+ * Settings route component
+ * @returns {Object<Node>} React node
+ */
 const Settings = () => {
   const routerHistory = useHistory();
   const dispatch = useDispatch();

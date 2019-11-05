@@ -1,21 +1,21 @@
 import axios from 'axios';
 
 import { endpoints } from '../config/endpoints.config';
-import { PAGE_SIZE } from '../config/app.config';
+import { PAGE_SIZE, SEED_NAME } from '../config/app.config';
 
 /**
  * Get list of users
- * @param {Number} nat - Nationality
- * @param {Number} [page=1] - Current page number
+ * @param {String} nat - Nationality
+ * @param {Number} page - Current page number
  * @returns {Promise<Array>} Fetched users
  */
-export const getUsers = (nat, page = 1) => {
+export const getUsers = (nat, page) => {
   return axios.get(endpoints.users, {
     params: {
       nat,
       page,
       results: PAGE_SIZE,
-      seed: 'addressbook'
+      seed: SEED_NAME
     }
   }).then(response => response.data.results)
 };

@@ -9,12 +9,26 @@ import {
 
 import {routeNames} from '../../../../config/routes.config';
 
+/**
+ * Sticky header component with a link to settings page and a search input
+ * @returns {Object<Node>} React node
+ */
 const StickyHeader = () => {
   const history = useHistory();
-  const onChange = (event, data) => {
-    console.warn('changeeeeeeeeeeee', event, data.value);
+
+  /**
+   * Handle input
+   * @param {Object<SyntheticEvent>} event - React synthetic event
+   * @param {Object} payload - Input payload
+   * @param {Object} payload.value - Input value
+   */
+  const onChange = (event, { value }) => {
+    console.warn('changeeeeeeeeeeee', event, value);
   };
 
+  /**
+   * Handle settings button click events
+   */
   const onSettingsClick = () => {
     history.push(routeNames.settings);
   };

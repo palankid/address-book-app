@@ -1,8 +1,14 @@
+/**
+ * Routes configuration
+ * @module config/routes
+ */
+
 import React from 'react';
+
+import NotFound from '../routes/NotFound';
 
 const UsersView = React.lazy(() => import('../routes/UsersView'));
 const Settings = React.lazy(() => import('../routes/Settings'));
-const NotFound = React.lazy(() => import('../routes/NotFound'));
 
 export const routeNames = {
   rest: '*',

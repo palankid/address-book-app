@@ -1,6 +1,7 @@
 .settings {
   $firstCellWidth: 200px;
   $fontSize: 1.5rem;
+  padding-top: 20px;
 
   &__back-link {
     width: $firstCellWidth;
@@ -14,7 +15,6 @@
 
   &__row {
     display: flex;
-    margin-top: 20px;
     align-items: center;
 
     &:nth-child(2) {

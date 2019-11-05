@@ -7,6 +7,10 @@ import { selectUser } from '../../reducer';
 import ModalContent from './ModalContent';
 import { selectedUserSelector } from './selectors';
 
+/**
+ * Component for showing user's details in a modal
+ * @returns {Object<Node>} React node
+ */
 const DetailsModal = () => {
   const dispatch = useDispatch();
   const selectedUser = useSelector(selectedUserSelector);
@@ -14,6 +18,9 @@ const DetailsModal = () => {
   const shouldShowModal = Boolean(selectedUser);
   if (!shouldShowModal) { return null }
 
+  /**
+   * Handle close modal events
+   */
   const onCloseModal = () => {
     dispatch(selectUser(''));
   };

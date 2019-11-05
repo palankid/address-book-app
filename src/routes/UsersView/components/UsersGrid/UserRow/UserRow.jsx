@@ -5,6 +5,11 @@ import { useDispatch } from 'react-redux';
 
 import { selectUser } from '../../../reducer';
 
+/**
+ * Component representing a single user row
+ * @param {Object} props - React PropTypes
+ * @returns {Object<Node>} React node
+ */
 const UserRow = ({
   user: {
     email,

@@ -1,3 +1,8 @@
+/**
+ * Users view related actions, reducer
+ * @module routes/UsersView/reducer
+ */
+
 import { createReducer, createAction } from 'redux-starter-kit'
 
 import { getUsers } from '../../api/addressBook.dataservice';
@@ -14,6 +19,16 @@ export const setError = createAction('SET_ERROR');
 export const setIsLoading = createAction('SET_IS_LOADING');
 export const updateUsers = createAction('UPDATE_USERS');
 
+/**
+ * @typedef {Function} fetchUsers
+ * @param {Function} dispatch - Dispatches an action
+ * @param {Function} getState - Retrieves application level state
+ */
+/**
+ * Fetch users thunk action to manage retrieving users
+ * @param {Number} delayMillis - Simulate that the database behind the endpoint is very busy
+ * @returns {fetchUsers}
+ */
 export const fetchUsers = (delayMillis = 50) => async (dispatch, getState) => {
   try {
     const { currentPage, users } = getState().usersView;
@@ -42,6 +57,9 @@ const initialState = {
   preFetchedUsers: []
 };
 
+/**
+ * Users view reducer
+ */
 const reducer = createReducer(initialState, {
   [resetUsers.type]: (state) => {
     state.users = [];

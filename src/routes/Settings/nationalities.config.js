@@ -1,3 +1,8 @@
+/**
+ * Nationalities
+ * @module routes/Settings/nationality
+ */
+
 const ch = 'ch';
 const es = 'es';
 const fr = 'fr';

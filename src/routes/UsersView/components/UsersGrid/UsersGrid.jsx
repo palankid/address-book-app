@@ -4,6 +4,12 @@ import { Container, Table } from 'semantic-ui-react';
 
 import UserRow from './UserRow'
 
+/**
+ * Component for showing all the users in a grid
+ * @param {Object} props - React PropTypes
+ * @param {Array} props.users - List of users to render
+ * @returns {Object<Node>} React node
+ */
 const UsersGrid = ({ users }) => {
   const usersRows = users.map(user => (
     <UserRow

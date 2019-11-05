@@ -6,6 +6,10 @@ import routes, { routeNames } from '../config/routes.config';
 
 import LoadingModule from './LoadingModule';
 
+/**
+ * Application component with lazy loaded components
+ * @returns {Object<Node>} React node
+ */
 const App = () => {
   const routeComponents = routes.map((route) => (
     <Route
