@@ -6,7 +6,7 @@ import StickyHeader from './components/StickyHeader';
 import UsersGrid from './components/UsersGrid';
 import DetailsModal from './components/DetailsModal'
 import EndOfUsersMessage from './components/EndOfUsersMessage';
-import { getUsers, setShouldLiftState } from './reducer';
+import { getUsers } from './reducer';
 import {
   filteredUsersSelector,
   isMaxUsersReachedSelector,
@@ -25,7 +25,6 @@ const UsersView = () => {
   const isMaxUsersReached = useSelector(isMaxUsersReachedSelector);
   const isLoading = useSelector(state => state.usersView.isLoading);
   const isUsersPopulated = useSelector(isUsersPopulatedSelector);
-  const users = useSelector(state => state.usersView.users);
 
   /**
    * Check if bottom of the view is reached
@@ -33,7 +32,7 @@ const UsersView = () => {
    */
   const getIsBottomReached = () => {
     const rect = containerRef.current.getBoundingClientRect();
-    return rect.bottom <= window.innerHeight;
+    return rect.bottom === window.innerHeight;
   };
 
   /**
@@ -57,18 +56,10 @@ const UsersView = () => {
     return () => document.removeEventListener('scroll', onScroll);
   }, []);
 
-  /**
-   * Recalculate isBottomReached flag and update it to store when users list is updated
-   */
-  useEffect(() => {
-    const isBottomReached = getIsBottomReached();
-    dispatch(setShouldLiftState(isBottomReached));
-  }, [users]);
-
   return (
     <div ref={containerRef}>
       <LoadingMessage
-        message="Loading users"
+        message="Preloading users"
         visible={isLoading}
       />
       <StickyHeader />

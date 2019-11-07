@@ -29,17 +29,23 @@ export const updateCache = createAction('UPDATE_CACHE');
  * @param {Function} getState - Retrieves application level state
  */
 export const fetchUsers = async (dispatch, getState) => {
+  const { cachedUsers, isLoading, users } = getState().usersView;
+  const allUsersCount = users.length + cachedUsers.length;
+  // If max number of users reached or if previous request is under way, do nothing
+  if (allUsersCount >= MAX_USERS_COUNT || isLoading) { return }
+
   dispatch(setIsLoading(true));
   const { usersView: { currentPage }, settings: { nationality } } = getState();
 
   // Simulate high DB load before calling data service
   await wait(1000);
-  const users = await addressBookService.fetchUsers(nationality, currentPage);
-  dispatch(updateCache(users));
+  const response = await addressBookService.fetchUsers(nationality, currentPage);
+  dispatch(updateCache(response));
 
   const { usersView: { shouldLiftState } } = getState();
   // Lift cache immediately if user scrolled down to the bottom of the page or if users list is empty initially
   shouldLiftState && dispatch(liftCachedUsers());
+  dispatch(setShouldLiftState(false));
 
   dispatch(setCurrentPage(currentPage + 1));
   dispatch(setIsLoading(false));
@@ -56,17 +62,17 @@ export const fetchUsers = async (dispatch, getState) => {
  * @returns {getUsers}
  */
 export const getUsers = () => async (dispatch, getState) => {
-  const { cachedUsers, isLoading, users } = getState().usersView;
-  const allUsersCount = users.length + cachedUsers.length;
+  const { cachedUsers } = getState().usersView;
+  const isCacheEmpty = !cachedUsers.length;
 
-  // Lift cached users - if there are any - to users list in order to show it immediately
-  dispatch(liftCachedUsers());
-  // If max number of users reached or if previous request is under way, do nothing
-  if (allUsersCount >= MAX_USERS_COUNT || isLoading) { return }
+  isCacheEmpty
+    ? dispatch(setShouldLiftState(true))
+    : dispatch(liftCachedUsers());
 
   try {
-    // Initial request, result goes straight to user list that results in immediate rendering
-    !users.length && await fetchUsers(dispatch, getState);
+    // Issue 2 consecutive requests when cache is empty because
+    // we need the first result on the page immediately and the second one in cache
+    isCacheEmpty && await fetchUsers(dispatch, getState);
     await fetchUsers(dispatch, getState);
   } catch (err) {
     dispatch(setError('Error occured during fetching users data.'));
