@@ -6,9 +6,9 @@ import { getDefaultMiddleware } from 'redux-starter-kit';
 import configureStore from 'redux-mock-store';
 
 import UsersView from './UsersView';
-import { getUsers } from './reducer';
+import { getUsers } from './store/reducer';
 
-jest.mock('./reducer');
+jest.mock('./store/reducer');
 
 describe('UsersView', () => {
   const createMockedStore = (users) => {

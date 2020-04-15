@@ -8,11 +8,11 @@ import { createMemoryHistory } from 'history';
 import { Dropdown, Icon } from 'semantic-ui-react';
 
 import Settings from './Settings';
-import { resetUsersView } from '../UsersView/reducer';
-import { selectNationality } from "./reducer";
+import { resetUsersView } from '../UsersView/store/reducer';
+import { selectNationality } from './store/reducer';
 
-jest.mock('../UsersView/reducer');
-jest.mock('./reducer');
+jest.mock('../UsersView/store/reducer');
+jest.mock('./store/reducer');
 
 describe('Settings', () => {
   const state = {

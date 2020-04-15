@@ -4,9 +4,9 @@ import {Container, Dropdown, Icon} from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 
 import { routeNames } from '../../config/routes.config';
-import nationalities from './nationalities.config';
-import { selectNationality } from './reducer';
-import { resetUsersView } from '../UsersView/reducer';
+import nationalities from './config/nationalities.config';
+import { selectNationality } from './store/reducer';
+import { resetUsersView } from '../UsersView/store/reducer';
 
 /**
  * Settings route component

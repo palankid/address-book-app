@@ -8,9 +8,9 @@ import { Provider } from 'react-redux';
 import { Icon, Input } from 'semantic-ui-react';
 
 import StickyHeader from './StickyHeader';
-import { changeFilter } from '../../reducer';
+import { changeFilter } from '../../store/reducer';
 
-jest.mock('../../reducer');
+jest.mock('../../store/reducer');
 
 describe('StickyHeader', () => {
   const state = {

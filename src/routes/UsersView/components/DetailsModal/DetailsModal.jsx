@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Icon, Modal } from 'semantic-ui-react';
 
-import { selectUser } from '../../reducer';
+import { selectUser } from '../../store/reducer';
 
 import ModalContent from './ModalContent';
 import { selectedUserSelector } from './selectors';

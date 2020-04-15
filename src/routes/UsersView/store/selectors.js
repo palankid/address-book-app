@@ -7,7 +7,7 @@
  * @returns {Array} Filtered users
  */
 
-import { MAX_USERS_COUNT } from '../../config/app.config';
+import { MAX_USERS_COUNT } from '../../../config/app.config';
 
 export const filteredUsersSelector = ({ usersView: { filter, users } }) => {
   if (!filter) { return users }

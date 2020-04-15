@@ -5,8 +5,8 @@
 
 import { combineReducers, configureStore } from 'redux-starter-kit';
 
-import usersReducer from '../routes/UsersView/reducer';
-import settingsReducer from '../routes/Settings/reducer';
+import { reducer as usersReducer } from '../routes/UsersView';
+import { reducer as settingsReducer } from '../routes/Settings';
 
 /** Combine application's state slices into one root reducer */
 const rootReducer = combineReducers({

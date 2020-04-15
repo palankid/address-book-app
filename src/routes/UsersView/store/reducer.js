@@ -5,9 +5,9 @@
 
 import { createReducer, createAction } from 'redux-starter-kit'
 
-import addressBookService from '../../api/addressBook.dataservice';
-import { wait } from '../../utils/async.utils';
-import { MAX_USERS_COUNT } from '../../config/app.config';
+import addressBookService from '../../../api/addressBook.dataservice';
+import { wait } from '../../../utils/async.utils';
+import { MAX_USERS_COUNT } from '../../../config/app.config';
 
 /**
  * Redux starter kit actions

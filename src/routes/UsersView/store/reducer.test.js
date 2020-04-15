@@ -1,8 +1,8 @@
 import { fetchUsers } from './reducer';
 
-import addressBookService from '../../api/addressBook.dataservice';
+import addressBookService from '../../../api/addressBook.dataservice';
 
-jest.mock('../../api/addressBook.dataservice');
+jest.mock('../../../api/addressBook.dataservice');
 
 describe('Users view reducer', () => {
   const createState = (users, cachedUsers, shouldLiftState, isLoading) => () => ({

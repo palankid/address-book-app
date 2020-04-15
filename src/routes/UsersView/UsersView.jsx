@@ -6,12 +6,12 @@ import StickyHeader from './components/StickyHeader';
 import UsersGrid from './components/UsersGrid';
 import DetailsModal from './components/DetailsModal'
 import EndOfUsersMessage from './components/EndOfUsersMessage';
-import { getUsers } from './reducer';
+import { getUsers } from './store/reducer';
 import {
   filteredUsersSelector,
   isMaxUsersReachedSelector,
   isUsersPopulatedSelector
-} from './selectors';
+} from './store/selectors';
 import LoadingMessage from '../../components/LoadingMessage/LoadingMessage';
 
 /**

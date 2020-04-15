@@ -5,7 +5,7 @@
 
 import { createReducer, createAction } from 'redux-starter-kit'
 
-import { nationalityKeys } from './nationalities.config';
+import { nationalityKeys } from '../config/nationalities.config';
 
 /**
  * Redux starter kit actions

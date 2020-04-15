@@ -3,7 +3,7 @@ import { shape, string } from 'prop-types';
 import { Button, Table } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 
-import { selectUser } from '../../../reducer';
+import { selectUser } from '../../../store/reducer';
 
 /**
  * Component representing a single user row

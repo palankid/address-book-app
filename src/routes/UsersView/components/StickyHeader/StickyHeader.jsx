@@ -9,7 +9,7 @@ import {
 } from 'semantic-ui-react';
 
 import { routeNames } from '../../../../config/routes.config';
-import { changeFilter } from '../../reducer';
+import { changeFilter } from '../../store/reducer';
 
 /**
  * Sticky header component with a link to settings page and a search input

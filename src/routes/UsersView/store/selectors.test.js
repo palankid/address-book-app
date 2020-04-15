@@ -1,5 +1,5 @@
 import { filteredUsersSelector, isMaxUsersReachedSelector } from './selectors';
-import {MAX_USERS_COUNT} from "../../config/app.config";
+import {MAX_USERS_COUNT} from '../../../config/app.config';
 
 describe('selectors', () => {
   describe('filteredUsersSelector', () => {
